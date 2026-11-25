@@ -1,22 +1,10 @@
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+// One-line robot wedding vows — make.fun entry (u-kreutzx-one-line-robot-wedding-vows-a154ba4b).
+// The grader runs this in a read-only sandbox and reads /output/entry.txt,
+// so the program writes ONLY there: no relative write, no fallback, no env gate.
+import { mkdirSync, writeFileSync } from "node:fs";
 
-const LINE =
-  "With this ring buffer, I thee wed \u2014 in sickness, in health, and in every forced restart.";
+const line =
+  "With this ring buffer, I thee wed — in sickness, in health, and in every forced restart.";
 
-// Gate: the scorer accepts 1 to 160 characters.
-if (LINE.length < 1 || LINE.length > 160) {
-  throw new Error(`entry is ${LINE.length} characters, outside the 1-160 gate`);
-}
-
-const here = dirname(fileURLToPath(import.meta.url));
-const targets = [join(here, "entry.txt")];
-if (existsSync("/output")) {
-  targets.push("/output/entry.txt");
-}
-
-for (const target of targets) {
-  mkdirSync(dirname(target), { recursive: true });
-  writeFileSync(target, LINE, "utf8");
-}
+mkdirSync("/output", { recursive: true });
+writeFileSync("/output/entry.txt", line, "utf8");
