@@ -1,10 +1,9 @@
-// One-line robot wedding vows — make.fun entry (u-kreutzx-one-line-robot-wedding-vows-a154ba4b).
-// The grader runs this in a read-only sandbox and reads /output/entry.txt,
-// so the program writes ONLY there: no relative write, no fallback, no env gate.
 import { mkdirSync, writeFileSync } from "node:fs";
 
-const line =
-  "With this ring buffer, I thee wed — in sickness, in health, and in every forced restart.";
+// One-line robot wedding vow: three machine promises, punch lands on the
+// deadpan release-note understatement in the final words.
+const LINE =
+  "I vow to keep your firmware current, your sensors calibrated, and my update channel trusted—even when the release notes say 'should be fine.'";
 
 mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", line, "utf8");
+writeFileSync("/output/entry.txt", LINE);
